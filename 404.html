@@ -13,6 +13,7 @@
             distanceTolerance: 3
         };
 
+        // Algorithme de Levenshtein
         function calculerDistance(a, b) {
             const matrix = [];
             for (let i = 0; i <= b.length; i++) matrix[i] = [i];
@@ -34,11 +35,12 @@
         }
 
         async function initRedirection() {
+            // 1. Nettoyage de l'URL entrante
             const path = window.location.pathname.replace(/\/$/, "");
             const segment = path.split("/").pop() || "";
             
-            // Correction ici : on retire .htm OU .html pour la base de comparaison
-            const urlSaisieNettoyee = decodeURIComponent(segment).replace(/\.html?$/i, "");
+            // On décode et on retire TOUTE extension (ex: .ht, .htm, .html, .txt)
+            const urlSaisieNettoyee = decodeURIComponent(segment).replace(/\.[a-z0-9]+$/i, "");
             
             try {
                 const response = await fetch(`https://api.github.com/repos/${CONFIG.repoOwner}/${CONFIG.repoName}/contents/`);
@@ -52,9 +54,9 @@
                 let meilleureCorrespondance = null;
                 let distanceMinimale = CONFIG.distanceTolerance;
 
+                // 2. Comparaison des noms de fichiers sans leurs extensions
                 pagesExistantes.forEach(page => {
-                    // On retire aussi l'extension du fichier distant pour comparer les noms bruts
-                    const nomPageNettoye = page.replace(/\.html?$/i, "");
+                    const nomPageNettoye = page.replace(/\.[a-z0-9]+$/i, "");
                     
                     const distance = calculerDistance(
                         urlSaisieNettoyee.toLowerCase(), 
@@ -67,6 +69,7 @@
                     }
                 });
 
+                // 3. Action
                 if (meilleureCorrespondance) {
                     window.location.replace("/" + meilleureCorrespondance);
                 } else {
