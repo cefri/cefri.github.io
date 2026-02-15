@@ -34,34 +34,39 @@
         }
 
         async function initRedirection() {
-            const chemin = window.location.pathname.split("/").pop();
-            // On nettoie l'URL saisie : on retire l'extension .html si elle existe pour la comparaison
-            const urlActuelle = decodeURIComponent(chemin).replace(/\.html$/, "");
+            const path = window.location.pathname.replace(/\/$/, "");
+            const segment = path.split("/").pop() || "";
+            
+            // Correction ici : on retire .htm OU .html pour la base de comparaison
+            const urlSaisieNettoyee = decodeURIComponent(segment).replace(/\.html?$/i, "");
             
             try {
                 const response = await fetch(`https://api.github.com/repos/${CONFIG.repoOwner}/${CONFIG.repoName}/contents/`);
-                if (!response.ok) throw new Error("Erreur API");
-        
+                if (!response.ok) throw new Error("Erreur API GitHub");
+
                 const fichiers = await response.json();
                 const pagesExistantes = fichiers
-                    .filter(f => f.type === "file" && f.name.endsWith(".html"))
+                    .filter(f => f.type === "file" && f.name.toLowerCase().endsWith(".html"))
                     .map(f => f.name);
-        
+
                 let meilleureCorrespondance = null;
                 let distanceMinimale = CONFIG.distanceTolerance;
-        
+
                 pagesExistantes.forEach(page => {
-                    // On nettoie aussi le nom du fichier GitHub pour la comparaison (ex: "Répertoire")
-                    const nomPageSansExtension = page.replace(/\.html$/, "");
+                    // On retire aussi l'extension du fichier distant pour comparer les noms bruts
+                    const nomPageNettoye = page.replace(/\.html?$/i, "");
                     
-                    const distance = calculerDistance(urlActuelle.toLowerCase(), nomPageSansExtension.toLowerCase());
+                    const distance = calculerDistance(
+                        urlSaisieNettoyee.toLowerCase(), 
+                        nomPageNettoye.toLowerCase()
+                    );
                     
                     if (distance < distanceMinimale) {
                         distanceMinimale = distance;
                         meilleureCorrespondance = page;
                     }
                 });
-        
+
                 if (meilleureCorrespondance) {
                     window.location.replace("/" + meilleureCorrespondance);
                 } else {
