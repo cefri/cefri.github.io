@@ -1,3 +1,74 @@
+<!DOCTYPE html>
 <html>
-<meta http-equiv="refresh" content="0; url=http://linktr.ee/cefri" />
+<head>
+    <meta charset="UTF-8">
+    <title>CEFRI</title>
+</head>
+<body>
+    <script>
+        const CONFIG = {
+            repoOwner: "cefri",
+            repoName: "cefri.github.io",
+            fallbackUrl: "http://linktr.ee/cefri",
+            distanceTolerance: 3
+        };
+
+        function calculerDistance(a, b) {
+            const matrix = [];
+            for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+            for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+            for (let i = 1; i <= b.length; i++) {
+                for (let j = 1; j <= a.length; j++) {
+                    if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+
+        async function initRedirection() {
+            // decodeURIComponent transforme "%C3%A9" en "é" pour une comparaison fidèle
+            const chemin = window.location.pathname.split("/").pop();
+            const urlActuelle = decodeURIComponent(chemin);
+            
+            try {
+                const response = await fetch(`https://api.github.com/repos/${CONFIG.repoOwner}/${CONFIG.repoName}/contents/`);
+                if (!response.ok) throw new Error("Erreur API");
+
+                const fichiers = await response.json();
+                const pagesExistantes = fichiers
+                    .filter(f => f.type === "file" && f.name.endsWith(".html"))
+                    .map(f => f.name);
+
+                let meilleureCorrespondance = null;
+                let distanceMinimale = CONFIG.distanceTolerance;
+
+                pagesExistantes.forEach(page => {
+                    const distance = calculerDistance(urlActuelle.toLowerCase(), page.toLowerCase());
+                    if (distance < distanceMinimale) {
+                        distanceMinimale = distance;
+                        meilleureCorrespondance = page;
+                    }
+                });
+
+                if (meilleureCorrespondance) {
+                    window.location.replace("/" + meilleureCorrespondance);
+                } else {
+                    window.location.replace(CONFIG.fallbackUrl);
+                }
+            } catch (error) {
+                window.location.replace(CONFIG.fallbackUrl);
+            }
+        }
+
+        initRedirection();
+    </script>
+</body>
 </html>
