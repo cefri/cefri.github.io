@@ -2,18 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5; url=https://linktr.ee/cefri" id="fallback-meta" />
     <title>CEFRI</title>
 </head>
 <body>
     <script>
+        const metaRefresh = document.getElementById('fallback-meta').content;
+        const fallbackUrl = metaRefresh.split('url=')[1];
+
         const CONFIG = {
             repoOwner: "cefri",
             repoName: "cefri.github.io",
-            fallbackUrl: "http://linktr.ee/cefri",
+            fallbackUrl: fallbackUrl, // Utilise l'URL extraite de la balise meta
             distanceTolerance: 3
         };
 
-        // Algorithme de Levenshtein
         function calculerDistance(a, b) {
             const matrix = [];
             for (let i = 0; i <= b.length; i++) matrix[i] = [i];
@@ -35,11 +38,8 @@
         }
 
         async function initRedirection() {
-            // 1. Nettoyage de l'URL entrante
             const path = window.location.pathname.replace(/\/$/, "");
             const segment = path.split("/").pop() || "";
-            
-            // On décode et on retire TOUTE extension (ex: .ht, .htm, .html, .txt)
             const urlSaisieNettoyee = decodeURIComponent(segment).replace(/\.[a-z0-9]+$/i, "");
             
             try {
@@ -54,22 +54,15 @@
                 let meilleureCorrespondance = null;
                 let distanceMinimale = CONFIG.distanceTolerance;
 
-                // 2. Comparaison des noms de fichiers sans leurs extensions
                 pagesExistantes.forEach(page => {
                     const nomPageNettoye = page.replace(/\.[a-z0-9]+$/i, "");
-                    
-                    const distance = calculerDistance(
-                        urlSaisieNettoyee.toLowerCase(), 
-                        nomPageNettoye.toLowerCase()
-                    );
-                    
+                    const distance = calculerDistance(urlSaisieNettoyee.toLowerCase(), nomPageNettoye.toLowerCase());
                     if (distance < distanceMinimale) {
                         distanceMinimale = distance;
                         meilleureCorrespondance = page;
                     }
                 });
 
-                // 3. Action
                 if (meilleureCorrespondance) {
                     window.location.replace("/" + meilleureCorrespondance);
                 } else {
