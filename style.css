@@ -2,28 +2,6 @@ body, p, li, td {
     font-family: "Open Sans", system-ui, -apple-system, sans-serif;
 }
 
-/* Correction des marges et de l'alignement des pavés orange */
-@media only screen and (max-width: 767px) {
-  .vc_column_container,
-  .column.one-fifth,
-  .column.one {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    box-sizing: border-box !important;
-  }
-
-  .mfn-icon-box,
-  .icon_box {
-    margin: 0 auto 15px auto !important;
-    width: 100% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-}
-
 footer#footer .inner .row-fluid.ff:first-child {
     padding-bottom: 10px !important;
 }
