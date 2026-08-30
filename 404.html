@@ -48,7 +48,10 @@
 
                 const fichiers = await response.json();
                 const pagesExistantes = fichiers
-                    .filter(f => f.type === "file" && f.name.toLowerCase().endsWith(".html") && f.name.toLowerCase() !== "404.html")
+                    .filter(f => {
+                        const name = f.name.toLowerCase();
+                        return f.type === "file" && (name.endsWith(".html") || name.endsWith(".pdf")) && name !== "404.html";
+                    })
                     .map(f => f.name);
 
                 let meilleureCorrespondance = null;
