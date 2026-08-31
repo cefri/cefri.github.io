@@ -49,8 +49,9 @@
                 const fichiers = await response.json();
                 const pagesExistantes = fichiers
                     .filter(f => {
-                        const name = f.name.toLowerCase();
-                        return f.type === "file" && (name.endsWith(".html") || name.endsWith(".pdf")) && name !== "404.html";
+                      const name = f.name.toLowerCase();
+                      const estValide = /\.(html|pdf|doc|docx)$/i.test(name);
+                      return f.type === "file" && estValide && name !== "404.html";
                     })
                     .map(f => f.name);
 
