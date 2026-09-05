@@ -68,7 +68,7 @@
                 });
 
                 if (meilleureCorrespondance) {
-                    window.location.replace("/" + meilleureCorrespondance);
+                    window.location.replace("/" + meilleureCorrespondance + window.location.search);
                 } else {
                     window.location.replace(CONFIG.fallbackUrl);
                 }
