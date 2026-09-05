@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Documents CEFRI</title>
+</head>
+
+<body>
+
+<script>
+const key = "T29Vcm1hbXJjOXdiY2EwVHR1dXZieGhRN2JZK3hMZ1RqKzB3MVBJbE5XND0_IjhkMjNhNjAzLWMwYjktNDU5Yy1iNmNjLThmNTNiMmJhN2QzOSI";
+const folder = "2414149";
+
+const params = new URLSearchParams(window.location.search);
+const search = params.get("search") || "";
+
+const mobile =
+  /Android|iPhone|iPod/i.test(navigator.userAgent) ||
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+const url = mobile
+  ? "https://cefri.onlyoffice.com/rooms/shared/filter"
+  : "https://cefri.onlyoffice.com/rooms/share";
+
+const destination = new URL(url);
+
+destination.searchParams.set("folder", folder);
+destination.searchParams.set("key", key);
+
+if (search) {
+  destination.searchParams.set("search", search);
+}
+
+window.location.replace(destination.toString());
+</script>
+
+</body>
+</html>
