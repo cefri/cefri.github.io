@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <div id="ds-frame"></div>
-    <script src="https://cefri.onlyoffice.com/static/scripts/sdk/2.2.0/api.js?src=https%3A%2F%2Fcefri.onlyoffice.com&mode=public-room&width=100%25&height=100%25&frameId=ds-frame&showHeader=true&showTitle=true&showMenu=false&showFilter=true&disableActionButton=false&infoPanelVisible=false&init=true&filter%5Bcount%5D=100&filter%5Bpage%5D=1&filter%5Bsortorder%5D=descending&filter%5Bsortby%5D=DateAndTime&filter%5Bsearch%5D=0400&filter%5BwithSubfolders%5D=false&id=2414149&requestToken=T29Vcm1hbXJjOXdiY2EwVHR1dXZieGhRN2JZK3hMZ1RqKzB3MVBJbE5XND0_IjhkMjNhNjAzLWMwYjktNDU5Yy1iNmNjLThmNTNiMmJhN2QzOSI&rootPath=%2Frooms%2Fshare"></script>
+    <script>
+        const destination = "https://cefri.onlyoffice.com/rooms/share?folder=2414149&key=T29Vcm1hbXJjOXdiY2EwVHR1dXZieGhRN2JZK3hMZ1RqKzB3MVBJbE5XND0_IjhkMjNhNjAzLWMwYjktNDU5Yy1iNmNjLThmNTNiMmJhN2QzOSI";
+        window.location.replace(destination + (window.location.search ? "&" + window.location.search.substring(1) : ""));
+    </script>
 </body>
 </html>
