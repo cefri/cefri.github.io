@@ -2,11 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="https://cefri.onlyoffice.com/static/scripts/sdk/2.2.0/api.js"></script>
 </head>
 <body>
+    <div id="ds-frame"></div>
     <script>
-        const destination = "https://cefri.onlyoffice.com/rooms/share?key=T29Vcm1hbXJjOXdiY2EwVHR1dXZieGhRN2JZK3hMZ1RqKzB3MVBJbE5XND0_IjhkMjNhNjAzLWMwYjktNDU5Yy1iNmNjLThmNTNiMmJhN2QzOSI";
-        window.location.replace(destination + (window.location.search ? "&" + window.location.search.substring(1) : ""));
+        const filter = Object.fromEntries(new URLSearchParams(window.location.search));
+
+        DocSpace.SDK.init({
+            frameId: "ds-frame",
+            src: "https://cefri.onlyoffice.com",
+            mode: "public-room",
+            id: "2414149",
+            requestToken: "T29Vcm1hbXJjOXdiY2EwVHR1dXZieGhRN2JZK3hMZ1RqKzB3MVBJbE5XND0_IjhkMjNhNjAzLWMwYjktNDU5Yy1iNmNjLThmNTNiMmJhN2QzOSI",
+            filter: filter
+        });
     </script>
 </body>
 </html>
