@@ -2,21 +2,29 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="https://cefri.onlyoffice.com/static/scripts/sdk/2.2.0/api.js"></script>
 </head>
 <body>
     <div id="ds-frame"></div>
     <script>
-        const filter = Object.fromEntries(new URLSearchParams(window.location.search));
+        const url = new URL("https://cefri.onlyoffice.com/static/scripts/sdk/2.2.0/api.js");
+        url.searchParams.set("src", "https://cefri.onlyoffice.com");
+        url.searchParams.set("mode", "public-room");
+        url.searchParams.set("width", "100%");
+        url.searchParams.set("height", "100%");
+        url.searchParams.set("frameId", "ds-frame");
+        url.searchParams.set("showFilter", "true");
+        url.searchParams.set("init", "true");
+        url.searchParams.set("id", "2414149");
+        url.searchParams.set("requestToken", "T29Vcm1hbXJjOXdiY2EwVHR1dXZieGhRN2JZK3hMZ1RqKzB3MVBJbE5XND0_IjhkMjNhNjAzLWMwYjktNDU5Yy1iNmNjLThmNTNiMmJhN2QzOSI");
+        url.searchParams.set("rootPath", "/rooms/share");
 
-        DocSpace.SDK.init({
-            frameId: "ds-frame",
-            src: "https://cefri.onlyoffice.com",
-            mode: "public-room",
-            id: "2414149",
-            requestToken: "T29Vcm1hbXJjOXdiY2EwVHR1dXZieGhRN2JZK3hMZ1RqKzB3MVBJbE5XND0_IjhkMjNhNjAzLWMwYjktNDU5Yy1iNmNjLThmNTNiMmJhN2QzOSI",
-            filter: filter
+        new URLSearchParams(window.location.search).forEach((value, key) => {
+            url.searchParams.append("filter[" + key + "]", value);
         });
+
+        const script = document.createElement("script");
+        script.src = url;
+        document.body.appendChild(script);
     </script>
 </body>
 </html>
