@@ -1,1 +1,4 @@
-Sitemap: https://www.cefri.com/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://cefri.com/sitemap.xml
