@@ -7,13 +7,19 @@
 </head>
 <body>
     <script>
-        const metaRefresh = document.getElementById('fallback-meta').content;
-        const fallbackUrl = metaRefresh.split('url=')[1];
+        const defaultFallbackUrl = document.getElementById('fallback-meta').content.split('url=')[1];
+
+        const path = window.location.pathname.replace(/\/$/, "");
+        const segment = path.split("/").pop() || "";
+        const urlSaisieNettoyee = decodeURIComponent(segment).replace(/\.[a-z0-9]+$/i, "").trim();
+
+        const googleQuery = `(site:cefri.info OR site:cefri.com OR site:cefri.onlyoffice.com) ${urlSaisieNettoyee}`;
+        const fallbackUrl = urlSaisieNettoyee ? `https://www.google.com/search?q=${encodeURIComponent(googleQuery)}` : defaultFallbackUrl;
 
         const CONFIG = {
             repoOwner: "cefri",
             repoName: "cefri.github.io",
-            fallbackUrl: fallbackUrl, // Utilise l'URL extraite de la balise meta
+            fallbackUrl: fallbackUrl,
             distanceTolerance: 3
         };
 
