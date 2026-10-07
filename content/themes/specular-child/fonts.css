@@ -9,14 +9,14 @@
 
 @font-face {
   font-family: 'Gotham-Black';
-  src: url('fonts/Gotham-Black/Gotham-Black.eot%3F') format('embedded-opentype'),  url('fonts/Gotham-Black/Gotham-Black.woff') format('woff'), url('fonts/Gotham-Black/Gotham-Black.ttf')  format('truetype'), url('fonts/Gotham-Black/Gotham-Black.svg') format('svg');
+  src: url('fonts/Gotham-Black/Gotham-Black.eot%3F') format('embedded-opentype'),  url('fonts/Gotham-Black/Gotham-Black.woff') format('woff'), url('fonts/Gotham-Black/Gotham-Black.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gotham-Book';
-  src: url('fonts/Gotham-Book/Gotham-Book.eot%3F') format('embedded-opentype'),  url('fonts/Gotham-Book/Gotham-Book.woff') format('woff'), url('fonts/Gotham-Book/Gotham-Book.ttf')  format('truetype'), url('fonts/Gotham-Book/Gotham-Book.svg') format('svg');
+  src: url('fonts/Gotham-Book/Gotham-Book.eot%3F') format('embedded-opentype'),  url('fonts/Gotham-Book/Gotham-Book.woff') format('woff'), url('fonts/Gotham-Book/Gotham-Book.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,7 +26,7 @@
 @font-face {
   font-family: 'Gotham-Bold';
   src: url('fonts/Gotham-Bold/Gotham-Bold.eot%3F') format('embedded-opentype'),  url('fonts/Gotham-Bold/Gotham-Bold.otf')  format('opentype'),
-	     url('fonts/Gotham-Bold/Gotham-Bold.woff') format('woff'), url('fonts/Gotham-Bold/Gotham-Bold.ttf')  format('truetype'), url('fonts/Gotham-Bold/Gotham-Bold.svg') format('svg');
+	     url('fonts/Gotham-Bold/Gotham-Bold.woff') format('woff'), url('fonts/Gotham-Bold/Gotham-Bold.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -34,7 +34,7 @@
 @font-face {
   font-family: 'GothamRounded-Bold';
   src: url('fonts/GothamRounded-Bold/GothamRounded-Bold.eot%3F') format('embedded-opentype'),  url('fonts/GothamRounded-Bold/GothamRounded-Bold.otf')  format('opentype'),
-	     url('fonts/GothamRounded-Bold/GothamRounded-Bold.woff') format('woff'), url('fonts/GothamRounded-Bold/GothamRounded-Bold.ttf')  format('truetype'), url('fonts/GothamRounded-Bold/GothamRounded-Bold.svg') format('svg');
+	     url('fonts/GothamRounded-Bold/GothamRounded-Bold.woff') format('woff'), url('fonts/GothamRounded-Bold/GothamRounded-Bold.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -42,7 +42,7 @@
 @font-face {
   font-family: 'GothamRounded-Book';
   src: url('fonts/GothamRounded-Book/GothamRounded-Book.eot%3F') format('embedded-opentype'),  url('fonts/GothamRounded-Book/GothamRounded-Book.otf')  format('opentype'),
-	     url('fonts/GothamRounded-Book/GothamRounded-Book.woff') format('woff'), url('fonts/GothamRounded-Book/GothamRounded-Book.ttf')  format('truetype'), url('fonts/GothamRounded-Book/GothamRounded-Book.svg') format('svg');
+	     url('fonts/GothamRounded-Book/GothamRounded-Book.woff') format('woff'), url('fonts/GothamRounded-Book/GothamRounded-Book.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -50,7 +50,7 @@
 @font-face {
   font-family: 'GothamRounded-Medium';
   src: url('fonts/GothamRounded-Medium/GothamRounded-Medium.eot%3F') format('embedded-opentype'),  url('fonts/GothamRounded-Medium/GothamRounded-Medium.otf')  format('opentype'),
-	     url('fonts/GothamRounded-Medium/GothamRounded-Medium.woff') format('woff'), url('fonts/GothamRounded-Medium/GothamRounded-Medium.ttf')  format('truetype'), url('fonts/GothamRounded-Medium/GothamRounded-Medium.svg') format('svg');
+	     url('fonts/GothamRounded-Medium/GothamRounded-Medium.woff') format('woff'), url('fonts/GothamRounded-Medium/GothamRounded-Medium.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }

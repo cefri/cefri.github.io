@@ -2,7 +2,6 @@
 	font-family: 'moon';
 	src:url('../font/moon.eot');
 	src:url('../font/moon.eot%3F') format('embedded-opentype'),
-		url('../font/moon.svg') format('svg'),
 		url('../font/moon.woff') format('woff'),
 		url('../font/moon.ttf') format('truetype');
 	font-weight: normal;
