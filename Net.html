@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="refresh" content="0; url=https://cefri.com/Communications" />
-</head>
+<script>
+    window.onload = function() {
+        var etape = localStorage.getItem("v");
+
+        if (!etape) {
+            localStorage.setItem("v", "1");
+            window.location.href = "https://www.linkedin.com/posts/cefri_lors-dune-r%C3%A9union-avec-les-acteurs-du-cefri-activity-7520891170172882945-Z5NI";
+        } else if (etape === "1") {
+            localStorage.setItem("v", "2");
+            window.location.href = "https://ilsnousfontconfiance.cefri.workers.dev";
+        } else {
+            window.location.href = "https://cefri.com/Communications";
+        }
+    };
+</script>
 </html>
