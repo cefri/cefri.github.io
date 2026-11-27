@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
+<body>
 <script>
-    window.onload = function() {
-        var etape = localStorage.getItem("v");
-
-        if (!etape) {
-            localStorage.setItem("v", "1");
-            window.location.href = "https://www.linkedin.com/posts/chers-certifi%C3%A9s-cefri-et-chers-prospects-share-7527098498320613377-hWWA";
-        } else if (etape === "1") {
-            localStorage.setItem("v", "2");
-            window.location.href = "https://ilsnousfontconfiance.cefri.workers.dev";
-        } else {
-            window.location.href = "https://cefri.com/Communications";
-        }
-    };
+var sites = [
+'https://cefri.com/Info',
+'https://cefri.com/Cloud',
+'https://cefri.com/Directory',
+'https://cefri.com/Contact',
+'https://cefri.com/Communications',
+'https://ilsnousfontconfiance.cefri.workers.dev',
+'https://cefri.com' ];
+window.location.replace(sites[Math.floor(Math.random()*sites.length)]);
 </script>
+</body>
 </html>
